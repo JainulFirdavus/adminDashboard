@@ -13,5 +13,5 @@ These instructions will get you a copy of the project up and running on your loc
     - **Via node `npm` package manager** - Run `npm install` on the project root
 
 4. run buil:
-	- **run `npm start` or `node app` ** - 
+	- **Run `npm start` or `node app` ** - 
     
