@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Admin</title>
+  <!-- plugins:css -->
+
+  <link rel="stylesheet" href="/app/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+  <!-- endinject -->
+  <!-- vendor css for this page -->
+  <!-- End vendor css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/app/assets/css/shared/style.css">
+  <!-- endinject -->
+  <!-- Layout style -->
+  <link rel="stylesheet" href="/app/assets/css/demo_1/style.css">
+  <!-- Layout style -->
+  <link rel="shortcut icon" href="/app/asssets/images/favicon.png" />
+
+  <!-- <script src="/app/assets/js/jquery-3.5.1.min.js"></script> -->
+
+
+  <script src="/app/assets/js/angular/angular.min.js"></script>
+  <script src="/app/assets/js/angular/angular-ui-router.js"></script>
+  <script src="/app/modules/app.js"></script>
+
+  <script src="/app/modules/dashboard/dashboard.js"></script>
+  <script src="/app/modules/users/users.js"></script>
+  <script src="/app/modules/chats/chats.js"></script>
+  <script src="/app/modules/groups/groups.js"></script>
+  <script src="/app/modules/settings/settings.js"></script>
+  <script src="/app/modules/common/services/apiservices.js"></script>
+  <script src="/app/modules/common/directives/validations.js"></script>
+  <script src="/app/modules/common/directives/table.js"></script>
+  <script src="/app/modules/authentication/authentication.js"></script>
+</head>
+
+<body class="header-fixed" ng-app="mjAdmin" ng-controller="MainCtrl">
+
+  <div ui-view></div>
+
+  </div>
+
+
+  <!-- plugins:js -->
+  <script src="/app/assets/vendors/js/core.js"></script>
+  <!-- endinject -->
+  <!-- Vendor Js For This Page Ends-->
+  <script src="/app/assets/vendors/apexcharts/apexcharts.min.js"></script>
+  <script src="/app/assets/vendors/chartjs/Chart.min.js"></script>
+  <script src="/app/assets/js/charts/chartjs.addon.js"></script>
+  <!-- Vendor Js For This Page Ends-->
+  <!-- build:js -->
+  <script src="/app/assets/js/template.js"></script>
+  <script src="/app/assets/js/dashboard.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<div class="col-lg-12">
+    <div class="grid">
+        <!--  <div class="row grid-header">
+            {{TC.data.tableName}}
+        </div> -->
+        <div class="grid-body">
+          <div class="row col-form-label">
+                <div class="col-sm-12 col-md-3">
+                    <label>Show :</label>
+                    <select ng-model="TC.entryLimit" ng-change="TC.pageChange(TC.currentPage,TC.entryLimit)"
+                        class="input-sm form-control inline pull-left" ng-init="somethingHere = options[0]"
+                        ng-options="size for size in TC.pageSizes">
+                    </select>
+                </div>
+
+                <div class="col-sm-12 col-md-9 pull-right">
+                    <div id="complex-header-table_filter" class="pull-right">
+                        <label>Search:</label>
+                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search"
+                            ng-model="TC.userTableSearch"
+                            ng-change="TC.pageChange(TC.currentPage,TC.entryLimit,TC.userTableSearch)"
+                            autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="item-wrapper">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="tableHead in TC.data.layout">
+                                    <span class="c-green-500">
+                                        {{tableHead.name}}
+                                    </span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="animate-repeat" ng-repeat="user in TC.data.data" ng-init="parentIndex = $index"
+                                ng-if="(TC.data.count > 0)">
+                                <td ng-repeat="data in TC.data.layout">
+                                    <content-item content="user" options="TC.data.delete" template="data.template"
+                                        currentpage="TC.currentPage" entrylimit="TC.entryLimit" predicate="TC.predicate"
+                                        reverse="TC.reverse" usertablesearch="TC.userTableSearch"></content-item>
+                                </td>
+                                <!--   <td class="actions">
+                                <i class="mdi mdi-dots-vertical"></i>
+                              </td> -->
+                            </tr>
+                            <tr ng-if="TC.data.count <= 0">
+                                <td colspan="100%" style="text-align: center; padding: 25px;">
+                                    No data available
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+           <div class="row col-form-label">
+                <div class="col-sm-12 col-md-5">
+                    <div class="dataTables_info" id="complex-header-table_info" role="status" aria-live="polite">
+                        <small class="text-muted">Showing {{(TC.currentPage-1)*TC.entryLimit +1}} to
+                            {{(TC.currentPage*TC.entryLimit)<=TC.data.count ? (TC.currentPage*TC.entryLimit) : TC.data.count}}
+                            of {{TC.data.count}} entries</small>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                    <ul uib-pagination total-items="TC.data.count"
+                        ng-change="TC.pageChange(TC.currentPage,TC.entryLimit)" ng-model="TC.currentPage"
+                        max-size="TC.maxPaginationSize" items-per-page="TC.entryLimit" boundary-links="true"
+                        rotate="false">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

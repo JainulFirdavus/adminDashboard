@@ -1,0 +1,176 @@
+<!-- {{AC.user}} -->
+<nav aria-span="breadcrumb">
+  <ol class="breadcrumb has-arrow">
+    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+    <li class="breadcrumb-item"><a href="#">ViewUser</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{UVC.stateParams.id}}</li>
+  </ol>
+</nav>
+
+<!-- username -->
+
+<!-- {{AC.user}} -->
+<!-- <div class="row">
+
+  <element ng-repeat="(key, value) in AC.user">
+    <div style="padding: 15px;" class="col-sm-4"
+      ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+      <span class="dark-color"> <strong> {{key}}: </strong>
+       
+        <span tabindex="0" data-toggle="tooltip" title="CopyText" copy-to-clipboard="{{value}}"
+          ng-if="(key == 'updated' || key == 'created' || key =='last_seen' || key =='last_active_seen')">
+          {{value | date}}</span>
+        <span tabindex="0" data-toggle="tooltip" title="CopyText" copy-to-clipboard="{{value}}"
+          ng-if="!(key == 'updated' ||key == 'created' || key =='last_seen' || key =='last_active_seen')">
+          {{value}}</span>
+      </span>
+    </div>
+  </element>
+</div> -->
+
+
+
+
+<section class="section about-section white-bg" id="about">
+
+  <div class="row align-items-center ">
+    <div class="col-lg-4">
+      <center>
+        <div class="about-avatar">
+          <img class="img-circle img-thumbnail" ng-src="AC.user.image" alt="" err-src>
+        </div>
+        <div class="about-text go-to">
+          <div class="media-body ml-4">
+            <h4 class="font-weight-bold mb-0">{{AC.user.name | capitalize}}
+              <!-- <span class="text-muted font-weight-normal"> | {{AC.user.current_status}}</span> -->
+            </h4>
+            <div class="text-muted mb-2">ID: {{AC.user._id}}</div>
+            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm">Edit</a>&nbsp; -->
+            <!-- <a href="javascript:void(0)" class="btn btn-default btn-sm">Profile</a>&nbsp; -->
+
+          </div>
+        </div>
+      </center>
+    </div>
+    <div class="col-lg-8">
+      <div class="about-text go-to">
+        <h3 class="dark-color">About</h3>
+
+        <!-- <a ng-click="AC.Edit='true'" ng-if="!AC.Edit" class="btn btn-success btn-sm pull-right">Edit</a>&nbsp; -->
+
+        <!-- <span class="span span-success">{{AC.user.current_status}}</span> -->
+        <hr>
+        <!-- <h6 class="theme-color lead">Name: {{AC.user.username | capitalize}}</h6> -->
+
+
+        <!--   <div class="row about-list" ng-show="!AC.Edit">
+          <div class="col-md-6">
+            <div class="media">
+              <p class="dark-color">Role : </p>
+              <p>{{AC.user.role}}</p>
+            </div>
+            <div class="media">
+              <p class="dark-color">last_login Date : </p>
+              <p>{{AC.user.activity.last_login | date:"MM/dd/yyyy h:mma"}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="media">
+              <p class="dark-color">Name : </p>
+              <p>{{AC.user.name}}</p>
+            </div>
+            <div class="media">
+              <p class="dark-color">E-mail : </p>
+              <p>{{AC.user.email}}</p>
+            </div>
+
+          </div>
+        </div> -->
+
+        <form name="userForm" novalidate autocomplete="off">
+          <div class="row">
+            <div class="form-group col-lg-4"
+              ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+              <label>Name</label>
+              <input type="text" placeholder="Name" name="name" class="form-control" ng-model="AC.user.name"
+                ng-minlength="3" ng-minlength="4" required>
+              <p ng-show="userForm.name.$error.minlength" class="text-danger">name is too short.</p>
+              <p ng-show="userForm.name.$error.maxlength" class="text-danger">name is too long.</p>
+            </div>
+
+            <div class="form-group col-lg-4"
+              ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+              <label>Email</label>
+              <input type="email" placeholder="Email" name="email" class="form-control" ng-model="AC.user.email"
+                required>
+              <!-- {{userForm.email.$valid}} -->
+              <p ng-show="userForm.email.$error.email" class="text-danger">Invalid Email.</p>
+              <!-- <p ng-show="userForm.email.$error.maxlength" class="text-danger">email is too long.</p> -->
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="form-group col-lg-4"
+              ng-class="{ 'has-error' : userForm.oldpassword.$invalid && !userForm.oldpassword.$pristine }">
+              <label>Old Password</label>
+              <input type="password" placeholder="Old password" name="oldpassword" class="form-control"
+                ng-model="AC.user.oldpassword" required>
+              <!-- {{userForm.email.$valid}} -->
+              <!-- <p ng-show="userForm.password.$error.email" class="text-danger">Invalid Email.</p> -->
+              <!-- <p ng-show="userForm.email.$error.maxlength" class="text-danger">email is too long.</p> -->
+              <div class="help-block" ng-messages="userForm.oldpassword.$error"
+                ng-show="userForm.oldpassword.$error.$dirty || userForm.oldpassword.$touched">
+                <div ng-messages="myPwdInvalid">Password do not match</div>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-4"
+              ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
+              <label>Password</label>
+              <input type="password" placeholder="Password" name="password" class="form-control"
+                ng-model="AC.user.password" password-verify="AC.user.confirmpassword" required>
+              <!-- {{userForm.email.$valid}} -->
+              <!-- <p ng-show="userForm.password.$error.email" class="text-danger">Invalid Email.</p> -->
+              <!-- <p ng-show="userForm.email.$error.maxlength" class="text-danger">email is too long.</p> -->
+              <div class="help-block" ng-messages="userForm.password.$error"
+                ng-show="userForm.password.$error.$dirty || userForm.password.$touched">
+                <div ng-messages="myPwdInvalid">Password do not match</div>
+              </div>
+            </div>
+
+            <div class="form-group col-lg-4"
+              ng-class="{ 'has-error' : userForm.confirmpassword.$invalid && !userForm.confirmpassword.$pristine }">
+              <label>Confirm Password</label>
+              <input type="password" placeholder="Password" name="confirmpassword" class="form-control"
+                ng-model="AC.user.confirmpassword" password-verify="AC.user.password" required>
+              <!-- {{userForm.email.$valid}} -->
+              <!-- <p ng-show="userForm.confirmpassword.$error.email" class="text-danger">Invalid Email.</p> -->
+              <!-- <p ng-show="userForm.email.$error.maxlength" class="text-danger">email is too long.</p> -->
+              <div class="help-block" ng-messages="userForm.confirmpassword.$error"
+                ng-show="userForm.confirmpassword.$error.$dirty || userForm.confirmpassword.$touched">
+                <div ng-messages="myPwdInvalid">Password do not match</div>
+              </div>
+            </div>
+          </div>
+
+
+        </form>
+        <a ng-click="AC.save(AC.user)" class="btn btn-sm pull-right">Save</a>&nbsp;
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+<style>
+  .img-circle {
+    height: 120px;
+    width: 120px;
+    padding: 5px;
+    border-radius: 50%;
+  }
+</style>

@@ -1,0 +1,51 @@
+<section ng-include="'/app/modules/common/header.html'" id="header"></section>
+<div class="page-body">
+
+  <div class="sidebar">
+    <!--   -->
+    <ul class="navigation-menu">
+
+      <li ng-repeat="menu in menuList track by $index" ui-sref-active="active" class="item">
+        <a ui-sref="{{menu.url}}">
+          <span class="link-title"> {{menu.title}} </span>
+          <i class="fa {{menu.icon}} link-icon"></i>
+          <!-- <span class="menu-arrow"></span> -->
+
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+
+  <section class="page-content-wrapper" ui-view> </section>
+
+
+
+
+
+  <!-- <div class="page-body">
+  <section ng-include="'/app/modules/common/sidebar.html'" id="header"></section>
+  <div ui-view> </div>
+</div> -->
+
+  <style>
+    /*  .menu-arrow {
+      -webkit-transition: -webkit-transform .15s;
+      transition: -webkit-transform .15s;
+      transition: transform .15s;
+      transition: transform .15s, -webkit-transform .15s;
+      position: absolute;
+      right: 30px;
+      display: inline-block;
+      font-family: 'Material Design Icons';
+      text-rendering: auto;
+      line-height: 1.5rem;
+      font-size: 1.1rem;
+      transform: translate(0, 0);
+    } */
+
+    .menu-arrow:before {
+      content: "\F0142";
+    }
+  </style>

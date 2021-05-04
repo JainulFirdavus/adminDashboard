@@ -1,0 +1,40 @@
+{
+  "name": "meancrud",
+  "version": "1.0.0",
+  "description": "basic crud operations in nodejs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./ app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JainulFirdavus/MeanCRUD.git"
+  },
+  "keywords": [
+    "node",
+    "crud",
+    "opertion"
+  ],
+  "author": "Jainulfirdavus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JainulFirdavus/MeanCRUD/issues"
+  },
+  "homepage": "https://github.com/JainulFirdavus/MeanCRUD#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.4.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.10.1",
+    "jsonwebtoken": "^8.5.1",
+    "lusca": "^1.7.0",
+    "mongodb": "^3.6.6",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  }
+}

@@ -1,0 +1,285 @@
+<div class="row">
+  <div class="col-12 py-2">
+    <h4 class="title_heading">Settings</h4>
+    <!-- <p class="text-gray">Mobile and Web Settings</p> -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb has-arrow">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Settings</a></li>
+        <li class="breadcrumb-item active" aria-current="page">General </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="row equel-grid">
+  <div class="grid">
+    <div class="grid-body">
+      <form name="settingForm" novalidate autocomplete="off">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="grid-header">General</p>
+            <div class="form-group"
+              ng-class="{ 'has-error' : settingForm.Title.$invalid && !settingForm.Title.$pristine }">
+              <label>Title</label>
+              <input type="text" placeholder="Title" name="Title" class="form-control" ng-model="SC.settings.title"
+                ng-minlength="4" required>
+              <p ng-show="settingForm.Title.$error.required" class="text-danger">Title is required.</p>
+              <p ng-show="settingForm.Title.$error.maxlength" class="text-danger">Title is too short.</p>
+            </div>
+
+            <div class="form-group" ng-class="{ 'has-error' : settingForm.URL.$invalid && !settingForm.URL.$pristine }">
+              <label>URL</label>
+              <input type="url" placeholder="URL" name="URL" class="form-control" ng-model="SC.settings.URL" required>
+              <p ng-show="settingForm.URL.$error.required" class="text-danger">URL is required.</p>
+              <p class="text-danger" ng-show="settingForm.URL.$error.url">
+                Not valid url!</p>
+            </div>
+            <div class="form-group"
+              ng-class="{ 'has-error' : settingForm.Email.$invalid && !settingForm.Email.$pristine }">
+              <label>Email</label>
+              <input type="email" placeholder="Email" name="Email" class="form-control" ng-model="SC.settings.email"
+                required>
+              <p ng-show="settingForm.Email.$error.required" class="text-danger">Email is required.</p>
+              <p class="text-danger" ng-show=" settingForm.Email.$error.email">
+                Not valid email!</p>
+            </div>
+            <div class="form-group"
+              ng-class="{ 'has-error' : generalSettingsForm.logo.$invalid && !generalSettingsForm.logo.$pristine, 'has-success' : generalSettingsForm.logo.$valid &amp;&amp; !generalSettingsForm.logo.$pristine}">
+              <label> Logo</label>
+              <input ui-jq="filestyle" type="file" ngf-change="upload($files);" ngf-select="SC.fileuploaded=true"
+                ng-model="SC.settings_logo" ngf-pattern="'image/jpg,image/jpeg,image/png,image/gif/*'" name="logo"
+                accept="image/*" ngf-max-size="1MB" ngf-model-invalid="errorFiles"
+                class="filestyle ng-pristine ng-untouched ng-valid ng-not-empty"
+                ui-options="{ buttonText: 'Select file', iconName: 'fa fa-inbox'}" id="logo" tabindex="-1"
+                style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+              <div class="bootstrap-filestyle input-group">
+                <input type="text" class="form-control" placeholder="" disabled="">
+                <span class="input-group-btn" tabindex="0">
+                  <label for="logo" class="btn btn-primary " style="height: 33px;"><span
+                      class="icon-span-filestyle fa fa-inbox"></span>
+                    <span class="buttonText">Select file</span></label></span>
+              </div>
+              <span class="help-block">Allowed files: jpeg, png, jpg. Max file size 1Mb</span>
+              
+              <div class="col-md-6 mb-4">
+                <form class="md-form">
+                  <div class="file-field">
+                    <div class="">
+                     
+                      <img ng-if="!SC.fileuploaded &&  !SC.settings.logo" class="img-fluid  ng-scope"
+                        src="/placeholder.jpg" style="width: 50%;">
+                      <img ng-if="SC.fileuploaded" class="img-fluid  ng-scope" ngf-src="SC.settings_logo" style="width: 50%;">
+                      <img ng-if="!SC.fileuploaded && SC.settings.logo" ng-src="{{SC.settings.logo}}" class="img-fluid" style="width: 50%;">
+                    </div>
+                  
+                  </div>
+                </form>
+
+              </div>
+             
+              <p class="help-block">
+                <span ng-show="generalSettingsForm.logo.$invalid &amp;&amp; !generalSettingsForm.logo.$pristine"
+                  style="color:red;" class="ng-hide">Logo is required.</span>
+              </p>
+            </div>
+
+
+
+            <div class="form-group ">
+              <div class=""><label for="inputType14">Themes</label>
+                <div class="showcase_content_area ">
+                  <div class="demo-wrapper">
+                    <div class="custom-control custom-switch">
+                      <label
+                        data-ng-repeat='theme in [{theme:"header-bg1",name:"Light",data:"demo_1"},{theme:"header-bg2",name:"Dark/Light",data:"demo_2"},{theme:"header-bg1",name:"Dark",data:"demo_3"}]'>
+                        <div class="setting-theme-color">
+
+                          <input class="theme-radio" type="radio" name="theme.theme" data-ng-model="SC.settings.themes"
+                            data-ng-value="theme.data" data-ng-value="true" />
+
+                          <a class="header-bg" hoe-color-type="{{theme.theme}}">&nbsp;</a>
+                          <label for="{{day}}" class="badge badge-pill badge-secondary">{{theme.name}}</label>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         <!--  <div class="col-md-6">
+
+          
+            <p class="grid-header">SMS Gateway</p>
+
+            <div class="row showcase_row_area">
+              <div class="col-md-3 "><label>SMS Verification</label>
+                <div class="col-md-9 showcase_content_area">
+                  <div class="form-group">
+                    <div class="radio">
+                      <label class="radio-label" ng-repeat='verification in ["on", "off"]'>
+                        <div class="radio"><label class="radio-label">
+                            <input id="verification" type="radio" name="verification"
+                              ng-model="SC.settings.sms_verification" ng-value="verification" required /> {{verification
+                            | capitalize}}
+                            <i class="input-frame"></i></label>
+                        </div>
+                      </label>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <fieldset ng-disabled="SC.settings.sms_verification == 'off'">
+              <div class="form-group"
+                ng-class="{ 'has-error' : settingForm.phone_number.$invalid && !settingForm.phone_number.$pristine }">
+                <label>Phone Number</label>
+                <input type="text" placeholder="Phone Number" name="phone_number" class="form-control"
+                  ng-model="SC.settings.phone_number" ng-required="SC.settings.sms_verification == 'on'">
+                <p ng-show="settingForm.phone_number.$error.required" class="text-danger">Phone Number is required.</p>
+
+              </div>
+
+              <div class="form-group"
+                ng-class="{ 'has-error' : settingForm.sms_authentication_key.$invalid && !settingForm.sms_authentication_key.$pristine }">
+                <label>SMS Authentication Key</label>
+                <input type="text" placeholder="SMS Authentication Key" name="sms_authentication_key"
+                  class="form-control" ng-model="SC.settings.sms_authentication_key" ng-minlength="3"
+                  ng-required="SC.settings.sms_verification == 'on'">
+                <p ng-show="settingForm.sms_authentication_key.$error.required" class="text-danger">Authentication Key
+                  is required.</p>
+                <p ng-show="settingForm.sms_authentication_key.$error.minlength" class="text-danger">Authentication Key
+                  is too short.</p>
+              </div>
+
+              <div class="form-group"
+                ng-class="{ 'has-error' : settingForm.account_sid.$invalid && !settingForm.account_sid.$pristine }">
+                <label>Account SID</label>
+                <input type="text" placeholder="Account SID" name="account_sid" class="form-control"
+                  ng-model="SC.settings.account_sid" ng-minlength="3"
+                  ng-required="SC.settings.sms_verification == 'on'">
+                <p ng-show="settingForm.account_sid.$error.required" class="text-danger">Title is required.</p>
+                <p ng-show="settingForm.account_sid.$error.minlength" class="text-danger">Title is too short.</p>
+              </div>
+            </fieldset>
+          </div> -->
+
+
+
+         <!--  <div class="col-md-6">
+            <p class="grid-header">Mobile</p>
+            <div class="row showcase_row_area">
+              <div class="col-md-3 "><label>Mode</label>
+                <div class="col-md-9 showcase_content_area">
+                  <div class="form-group">
+                    <div class="radio">
+                      {{SC.settings.mobile_mode}}
+                      <label class="radio-label"
+                        ng-repeat='mode in [{name:"development", value:"false"}, {name:"production", value:"true"}]'>
+                        <div class="radio">
+                          <label class="radio-label">
+                            <input type="radio" name="mode.name" ng-model="SC.settings.mobile_mode"
+                              ng-value="mode.value" /> {{mode.name | capitalize}}
+                            <i class="input-frame"></i></label>
+                        </div>
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <fieldset>
+
+              <label class="text-primary font-weight-bold">Android</label>
+              <hr>
+              <div class="form-group"
+                ng-class="{ 'has-error' : settingForm.fcm.$invalid && !settingForm.fcm.$pristine }">
+                <label>FCM Key</label>
+                <input type="text" placeholder="FCM" name="fcm" class="form-control" ng-model="SC.settings.fcm"
+                  required>
+                <p ng-show="settingForm.fcm.$error.required" class="text-danger">FCM is required.</p>
+              </div>
+
+              <label class="text-primary font-weight-bold">IOS</label>
+              <hr>
+              <div class="form-group"
+                ng-class="{ 'has-error' : settingForm.bundle_id.$invalid && !settingForm.bundle_id.$pristine }">
+                <label>Bundle Id</label>
+                <input type="text" placeholder="Bundle Id" name="bundle_id" class="form-control"
+                  ng-model="SC.settings.bundle_id" ng-minlength="3" required>
+                <p ng-show="settingForm.bundle_id.$error.required" class="text-danger">Bundle Id
+                  is required.</p>
+              </div>
+          </div>
+          </fieldset>
+        </div> -->
+
+    </div>
+
+    <button type="submit" ng-click="SC.submitSettings(settingForm.$valid,SC.settings)"
+      class="btn btn-sm btn-primary pull-right">Submit</button>
+
+    </form>
+  </div>
+</div>
+</div>
+
+<style>
+  .sub-title {
+    color: #9c9c9c;
+    font-size: 13px;
+    line-height: 30px;
+    margin: 0;
+    padding: 6px 2px;
+    position: relative;
+    text-align: center;
+  }
+
+  .theme-radio {
+    width: 19px;
+    height: 16px;
+    text-align: center;
+    margin-top: 2px;
+    position: absolute;
+    /* z-index: -1; */
+
+  }
+
+  .setting-theme-color {
+    padding: 0px 10px;
+    width: 100%;
+  }
+
+  .setting-theme-color a[hoe-color-type="header-bg1"] {
+    background: #007bff;
+  }
+
+  .setting-theme-color a[hoe-color-type="header-bg2"] {
+    /* background: #007bff; */
+    background: linear-gradient(-45deg, #007bff, #007bff, white 49%, white 51%, #384b5f 51%);
+  }
+
+  .setting-theme-color a[hoe-color-type="header-bg3"] {
+    background: #384b5f;
+  }
+
+  .setting-theme-color a:hover,
+  .setting-theme-color a:focus {
+    text-decoration: none;
+  }
+
+
+  .setting-theme-color a {
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  }
+</style>

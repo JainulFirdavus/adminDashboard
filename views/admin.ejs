@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mjAdmin" ng-controller="MainCtrl">
+<!-- {{themes}} -->
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mj Admin</title>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="/app/assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
+    <link rel="stylesheet" href="/app/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/app/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/app/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/app/assets/css/sweet-alert.css">
+    <link rel="stylesheet" href="/app/assets/css/custome.css">
+    <% var css_link='/app/assets/css/' + themes + '/style.css' ; %>
+        <link rel="stylesheet" type="text/css" href="<%= css_link %>">
+
+</head>
+
+<body class="header-fixed">
+    <div ui-view autoscroll="true" autoscroll-body-top></div>
+    <script src="/app/assets/js/jquery.min.js"></script>
+    <script src="/app/assets/vendors/chartjs/Chart.min.js"></script>
+    <script src="/app/assets/js/charts/chartjs.addon.js"></script>
+    <script src="/app/assets/js/angular/angular.min.js"></script>
+    <script src="/app/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/app/assets/js/popper.js"></script>
+    <script src="/app/assets/js/angular/angular-ui-router.js"></script>
+    <script src="/app/assets/js/angular/angular-animate.min.js"></script>
+    <script src="/app/assets/js/angular/angular-touch.min.js"></script>
+    <script src="/app/assets/js/angular/angular-sanitize.min.js"></script>
+    <script src="/app/assets/js/chartjs/angular-chart.min.js"></script>
+    <script src="/app/assets/js/gfl-text-avatar.js"></script>
+    <script src="/app/assets/js/sweet-alert.min.js"></script>
+    <script src="/app/assets/js/ui-bootstrap-tpls-3.0.6.js"></script>
+    <script src="/app/assets/js/ng-file-upload-shim.js"></script>
+    <script src="/app/assets/js/ng-file-upload.js"></script>
+
+    <script src="/app/modules/app.js"></script>
+    <script src="/app/modules/dashboard/dashboard.js"></script>
+    <script src="/app/modules/users/users.js"></script>
+    <script src="/app/modules/admin/admin.js"></script>
+    <script src="/app/modules/settings/settings.js"></script>
+    <script src="/app/modules/common/directives/SweetAlert.js"></script>
+    <script src="/app/modules/common/services/apiservices.js"></script>
+    <script src="/app/modules/common/directives/validations.js"></script>
+    <script src="/app/modules/common/directives/table.js"></script>
+    <script src="/app/modules/authentication/authentication.js"></script>
+    <script src="/app/modules/common/directives/ng-google-chart.js"></script>
+
+</body>
+
+
+
+</html>

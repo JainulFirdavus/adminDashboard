@@ -1,0 +1,104 @@
+<!-- <main class="main-content bgc-grey-100">
+  <div id="mainContent">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="bgc-white bd bdrs-3 p-20 mB-20">
+
+            <div class="row">
+              <div class="col-12 py-2">
+                <h4>Settings</h4>
+                <p class="text-gray">Mobile and Web Settings</p>
+              </div>
+            </div>
+           
+            <custom-table data="UC.table"></custom-table>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main> -->
+
+
+<div class="row">
+  <div class="col-12 py-2">
+    <h4 class="title_heading">Users</h4>
+    <!-- <p class="text-gray">Users List</p> -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb has-arrow">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+        <li class="breadcrumb-item active" aria-current="page">List</li>
+
+        <!-- <li class="breadcrumb-item active" aria-current="page">{{UVC.stateParams.id}}</li> -->
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-4 col-sm-6 col-6">
+    <div class="grid">
+      <div class="grid-body text-gray">
+        <div class="wrapper">
+          <div class="d-flex justify-content-between">
+            <div class="split-header">
+              <i class="fa fa-user link-icon mt-1 mb-1 mr-2"></i>
+              <p class="card-title">Users</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-end pt-2 mb-4">
+            <h4 class="text-center text-primary"> {{UC.userCount}}</h4>
+            <!-- <p class="ml-2 text-muted">Users</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-6">
+    <div class="grid">
+      <div class="grid-body text-gray">
+        <div class="wrapper">
+          <div class="d-flex justify-content-between">
+            <div class="split-header">
+              <i class="fa fa-envelope-open-o mt-1 mb-1 mr-2"></i>
+              <p class="card-title">Active User</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-end pt-2 mb-4">
+            <h4 class="text-center text-success"> {{UC.activeUser}}</h4>
+            <!-- <p class="ml-2 text-muted">Chats</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-6">
+    <div class="grid">
+      <div class="grid-body text-gray">
+        <div class="wrapper">
+          <div class="d-flex justify-content-between">
+            <div class="split-header">
+              <i class="fa fa-users link-icon mt-1 mb-1 mr-2"></i>
+              <p class="card-title">Pending User</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-end pt-2 mb-4">
+            <h4 class="text-center text-primary"> {{UC.pendingUser}}</h4>
+            <!-- <p class="ml-2 text-muted">Groups</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <gfl-text-avatar>John Doe</gfl-text-avatar>
+<gfl-text-avatar>dsad Doe</gfl-text-avatar>
+<gfl-text-avatar>John dsad</gfl-text-avatar>
+ -->
+
+<!-- <h4 class="c-grey-900 mB-20">Users List</h4> -->
+<custom-table data="UC.table"></custom-table>

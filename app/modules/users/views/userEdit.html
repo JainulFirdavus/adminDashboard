@@ -1,0 +1,135 @@
+<!-- {{UVC.user}} -->
+<nav aria-label="breadcrumb">
+  <h4 class="title_heading">Users</h4>
+  <ol class="breadcrumb has-arrow">
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Users</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void(0)">ViewUser</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{UVC.stateParams.id}}</li>
+  </ol>
+</nav>
+
+<!-- username -->
+
+<!-- {{UVC.user}} -->
+<!-- <div class="row">
+
+  <element ng-repeat="(key, value) in UVC.user">
+    <div style="padding: 15px;" class="col-sm-4"
+      ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+      <label> <strong> {{key}}: </strong>
+       
+        <span tabindex="0" data-toggle="tooltip" title="CopyText" copy-to-clipboard="{{value}}"
+          ng-if="(key == 'updated' || key == 'created' || key =='last_seen' || key =='last_active_seen')">
+          {{value | date}}</span>
+        <span tabindex="0" data-toggle="tooltip" title="CopyText" copy-to-clipboard="{{value}}"
+          ng-if="!(key == 'updated' ||key == 'created' || key =='last_seen' || key =='last_active_seen')">
+          {{value}}</span>
+      </label>
+    </div>
+  </element>
+</div> -->
+
+
+
+
+<section class="section about-section white-bg" id="about">
+
+  <div class="row align-items-center ">
+    <div class="col-lg-4">
+      <center>
+        <div class="about-avatar">
+          <img class="img-circle img-thumbnail" ng-src="/files_dashboard/user_avatars/{{UVC.user.image}}" alt=""
+            err-src>
+        </div>
+        <div class="about-text go-to">
+          <div class="media-body ml-4">
+            <h4 class="font-weight-bold mb-0">{{UVC.user.username | capitalize}}
+              <span class="text-muted font-weight-normal"> | {{UVC.user.current_status}}</span>
+            </h4>
+            <div class="text-muted mb-2">ID: {{UVC.user._id}}</div>
+            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm">Edit</a>&nbsp; -->
+            <!-- <a href="javascript:void(0)" class="btn btn-default btn-sm">Profile</a>&nbsp; -->
+
+          </div>
+        </div>
+      </center>
+    </div>
+    <div class="col-lg-8">
+      <div class="about-text go-to">
+        <h3 class="dark-color">About</h3>
+
+        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm pull-right">Edit</a>&nbsp; -->
+
+        <!-- <span class="label label-success">{{UVC.user.current_status}}</span> -->
+        <hr>
+        <!-- <h6 class="theme-color lead">Name: {{UVC.user.username | capitalize}}</h6> -->
+
+
+        <div class="row about-list">
+          <div class="col-md-6">
+            <div class="media">
+              <label>Phone</label>
+              <p>{{UVC.user.phone}}</p>
+            </div>
+            <div class="media">
+              <label>Join Date</label>
+              <p>{{UVC.user.created | date:"dd/MM/yyyy h:mma"}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-6">
+            <div class="media">
+              <label>Country</label>
+              <p>{{UVC.user.country}}</p>
+            </div>
+            <div class="media">
+              <label>Device</label>
+              <p>{{UVC.user.device_type | uppercase}}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="counter">
+    <div class="row">
+      <div class="col-6 col-lg-3">
+        <div class="count-data text-center" ui-sref="admin.chats({id:UVC.user._id})">
+          <h6 class="count h2" data-to="500" data-speed="500">{{UVC.userschat}}</h6>
+          <p class="m-0px font-w-600">Chats</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="count-data text-center" ui-sref="admin.groups({id:UVC.user._id})">
+          <h6 class="count h2" data-to="150" data-speed="150">{{UVC.usersgroup}}</h6>
+          <p class="m-0px font-w-600">Group Chat</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="count-data text-center" ui-sref="admin.call({id:UVC.user._id})">
+          <h6 class="count h2" data-to="850" data-speed="850">{{UVC.userscall}}</h6>
+          <p class="m-0px font-w-600">Audio Call</p>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="count-data text-center" ui-sref="admin.call({id:UVC.user._id})">
+          <h6 class="count h2" data-to="190" data-speed="190">{{UVC.userscall}}</h6>
+          <p class="m-0px font-w-600">Video Call</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<style>
+  .img-circle {
+    height: 120px;
+    width: 120px;
+    padding: 5px;
+    border-radius: 50%;
+  }
+</style>

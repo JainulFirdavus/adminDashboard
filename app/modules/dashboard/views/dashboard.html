@@ -1,0 +1,193 @@
+<div class="page-content-wrapper-inner">
+  <div class="content-viewport">
+    <div class="row">
+      <div class="col-12 py-2">
+        <h4 class="title_heading">Dashboard</h4>
+
+        <p class="text-gray">Welcome aboard,{{ title | capitalize }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-6">
+        <div class="grid">
+          <div class="grid-body text-gray">
+            <div class="wrapper">
+              <div class="d-flex justify-content-between">
+                <div class="split-header">
+                  <i class="fa fa-user link-icon mt-1 mb-1 mr-2"></i>
+                  <p class="card-title">Users Growth</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-end pt-2 mb-4">
+                <h4 class="text-center text-primary"> {{DC.usersCount}}</h4>
+                <p class="ml-2 text-muted">Users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-6">
+        <div class="grid">
+          <div class="grid-body text-gray">
+            <div class="wrapper">
+              <div class="d-flex justify-content-between">
+                <div class="split-header">
+                  <i class="fa fa-envelope-open-o mt-1 mb-1 mr-2"></i>
+                  <p class="card-title">Documents Growth</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-end pt-2 mb-4">
+                <h4 class="text-center text-success"> {{DC.chatsCount}}</h4>
+                <p class="ml-2 text-muted">Documents</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-6">
+        <div class="grid">
+          <div class="grid-body text-gray">
+            <div class="wrapper">
+              <div class="d-flex justify-content-between">
+                <div class="split-header">
+                  <i class="fa fa-users link-icon mt-1 mb-1 mr-2"></i>
+                  <p class="card-title">Emails Growth</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-end pt-2 mb-4">
+                <h4 class="text-center text-primary"> {{DC.groupsCount}}</h4>
+                <p class="ml-2 text-muted">Emails</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-8 equel-grid">
+        <div class="grid">
+          <div class="grid-body py-3">
+            <p class="card-title ml-n1">Users Log</p>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover table-sm">
+              <thead>
+                <tr class="solid-header">
+                  <th colspan="2" class="pl-4">Users</th>
+                  <th>Phone</th>
+                  <th>Created On</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="users in DC.lastUsers track by $index" ui-sref="admin.viewusers({id:users._id})">
+                  <td class="pr-0 pl-4">
+                    <img class="profile-img img-sm" err-src ng-src="/files_dashboard/{{users.thumbnail}}"
+                      alt="profile image">
+                    <!-- <img class="profile-img img-sm" src="/app/assets/images/profile/male/image_4.png"
+                      > -->
+                  </td>
+                  <td class="pl-md-0">
+                    <small class="text-black font-weight-medium d-block" ng-if="users.username">{{users.username ?
+                      users.username : 'Pending'| capitalize}}</small>
+                    <span class="text-gray">
+                      <span class="mdi mdi-cellphone small bg-primary" ng-if="!users.username"></span>{{users.country}}
+                    </span>
+                  </td>
+                  <td>
+                    <small class="text-black font-weight-medium d-block"> {{users.phone}} </small>
+                    <span class="text-gray">
+                      <span class="small bg-primary" ng-if="!users.device_type"></span>{{users.device_type |
+                      capitalize}}
+                    </span>
+                  </td>
+                  <td> {{users.created | date:"MMM dd, yyyy h:mma"}} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a class="border-top px-3 py-2 d-block text-gray" ui-sref="admin.users">
+            <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i>View All</small>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 equel-grid">
+        <div class="grid">
+          <div class="grid-body">
+            <div class="split-header">
+              <p class="card-title">Group Log</p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-trasnparent action-btn btn-xs component-flat pr-0"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-dots-vertical"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" ui-sref="admin.groups">View All</a>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="vertical-timeline-wrapper">
+              <div class="timeline-vertical dashboard-timeline">
+                <div class="activity-log" ng-repeat="group in DC.group track by $index">
+                  <p class="log-name">{{group.name}}</p>
+                  <div class="log-details">Created: {{group.createdusers[0]}}
+                    <div class="grouped-images mt-2">
+
+                      <span ng-repeat="users in group.users track by $index | limitTo:5">
+                        <img class=" img-sm" err-src ng-src="/files_dashboard/{{users[0].thumbnail}}"
+                          alt="Profile Image" data-toggle="tooltip" title="{{users.name}}">
+                      </span>
+                      <span class="plus-text img-sm" ng-show="group.users.length > 5">+</span>
+                    </div>
+                  </div>
+                  <small class="log-time">{{group.date | date:"MMM dd, yyyy h:mma" }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="border-top px-3 py-2 d-block text-gray" ui-sref="admin.groups">
+            <small class="font-weight-medium"><i class="mdi mdi-chevron-down mr-2"></i> View All </small>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-12 equel-grid">
+        <div class="grid widget-revenue-card">
+          <div class="grid-body d-flex flex-column h-100">
+            <div class="split-header">
+              <p class="card-title">Users by country</p>
+
+            </div>
+            <div google-chart chart="chart" style="width:100% ;height:350px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 equel-grid">
+        <div class="grid">
+          <div class="grid-body d-flex flex-column h-100">
+            <div class="wrapper">
+              <div class="d-flex justify-content-between">
+                <div class="split-header">
+
+                  <p class="card-title">User Growth</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="">
+              <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"
+                chart-colors="ColorBar" chart-options="options" chart-click="clickme" chart-hover="hoverme"
+                chart-dataset-override="DataSetOverride" height="206" width="282"
+                style="display: block; height: 197px; width: 269px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- content viewport ends -->
