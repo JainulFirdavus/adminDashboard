@@ -11,6 +11,6 @@ These instructions will get you a copy of the project up and running on your loc
 3. [Clone the project from github](https://github.com/JainulFirdavus/adminDashboard) or [download the archive](https://github.com/JainulFirdavus/adminDashboard)
 4. Install necessary dependencies:
     - **Via node `npm` package manager** - Run `npm install` on the project root
-5. run buil:
+5. run project:
 	- Run `npm start` or `node app`  - 
     
